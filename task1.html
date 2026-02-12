@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2 - Task 1</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            margin: 40px;
+            /* Changed to a clean Slate to Soft Grey gradient */
+            background: linear-gradient(135deg, #eceff1, #cfd8dc);
+            color: #263238;
+            transition: background 0.5s, color 0.5s;
+        }
+        h1 {
+            text-align: center;
+            /* Changed to a Deep Teal */
+            color: #006064;
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            /* Changed shadow to match teal theme */
+            box-shadow: 0 4px 15px rgba(0, 96, 100, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            animation: fadeInUp 1s ease;
+        }
+        th, td {
+            /* Changed border to a muted blue-grey */
+            border: 1px solid #b0bec5;
+            padding: 12px;
+            vertical-align: top;
+            transition: background 0.3s;
+        }
+        th {
+            /* Changed header background to a very light teal */
+            background-color: #e0f2f1;
+            text-align: left;
+            width: 30%;
+        }
+        td {
+            background-color: #ffffff;
+        }
+        tr:hover td {
+            /* Subtle hover effect */
+            background-color: #f1f8f9;
+        }
+        .photo {
+            text-align: center;
+            background-color: #f5f7f7;
+        }
+        img {
+            width: 120px;
+            height: 150px;
+            object-fit: cover;
+            /* Matching teal border for the image */
+            border: 2px solid #00838f;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        img:hover {
+            transform: scale(1.05);
+        }
+        .section-title {
+            font-weight: bold;
+            /* Stronger teal for section breaks */
+            background-color: #00838f;
+            text-align: center;
+            color: #ffffff;
+        }
+        a {
+            /* Links now use a vibrant secondary teal */
+            color: #00acc1;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #006064;
+        }
+
+        .toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #006064;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 96, 100, 0.3);
+            transition: background 0.3s;
+        }
+        .toggle-btn:hover {
+            background-color: #004d40;
+        }
+
+        .top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #00838f;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            box-shadow: 0 4px 10px rgba(0, 131, 143, 0.4);
+            transition: transform 0.3s;
+        }
+        .top-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeInUp {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        @keyframes fadeInDown {
+            from {opacity: 0; transform: translateY(-20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        /* Dark Mode Colors */
+        body.dark-mode {
+            background: linear-gradient(135deg, #102027, #263238);
+            color: #eceff1;
+        }
+        body.dark-mode table {
+            background-color: #1c313a;
+            color: #eceff1;
+            border-color: #455a64;
+        }
+        body.dark-mode th {
+            background-color: #263238;
+        }
+        body.dark-mode td {
+            background-color: #1c313a;
+        }
+        body.dark-mode a {
+            color: #4dd0e1;
+        }
+        body.dark-mode .toggle-btn {
+            background-color: #4dd0e1;
+            color: #102027;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="toggle-btn" onclick="toggleMode()">🌙 Dark Mode</button>
+<body>
+
+    <h1>My Personal Information</h1>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <td>Nur Syamimi Aida Binti Suhairi</td>
+            <th rowspan="4" class="photo">
+                <img src="Photos.jpeg" alt="My Photo">
+            </th>
+        </tr>
+        <tr>
+            <th>Date of Birth</th>
+            <td>3 January 2003</td>
+        </tr>
+        <tr>
+            <th>Religion</th>
+            <td>Islam</td>
+        </tr>
+        <tr>
+            <th>Race</th>
+            <td>Malay</td>
+        </tr>
+
+        <tr class="section-title">
+            <th colspan="3">Address</th>
+        </tr>
+        <tr>
+            <th>Street</th>
+            <td colspan="2">Lot 116 Simpang Makmur, Kg Dew</td>
+        </tr>
+        <tr>
+            <th>Town</th>
+            <td colspan="2">Simpang</td>
+        </tr>
+        <tr>
+            <th>District</th>
+            <td colspan="2">Taiping</td>
+        </tr>
+        <tr>
+            <th>State</th>
+            <td colspan="2">Perak</td>
+        </tr>
+
+        <tr class="section-title">
+            <th colspan="3">Contact</th>
+        </tr>
+        <tr>
+            <th>Mobile Phone</th>
+            <td colspan="2">+60175073780</td>
+        </tr>
+        <tr>
+            <th>Social Media</th>
+            <td colspan="2"><a href="https://www.instagram.com/aidamxi_/" target="_blank">Instagram</a></td>
+        </tr>
+        <tr>
+            <th>Website</th>
+            <td colspan="2"><a href="https://github.com/aidamsuhairi" target="_blank">Github</a></td>
+        </tr>
+
+        <tr>
+            <th>Course and Institution</th>
+            <td colspan="2">BSc Information Technology with honours, Universiti Tun Hussein Onn Malaysia</td>
+        </tr>
+        <tr>
+            <th>Programming Skills</th>
+            <td colspan="2">HTML, CSS, JavaScript, Python , C# , C++ </td>
+        </tr>
+        <tr>
+            <th>Hobbies</th>
+            <td colspan="2">Running, Coding</td>
+        </tr>
+        <tr>
+            <th>2025 Wishlist</th>
+            <td colspan="2">Travel Oversea</td>
+        </tr>
+    </table>
+<button class="top-btn" id="topBtn" onclick="scrollToTop()">↑</button>
+
+</body>
+</html>
