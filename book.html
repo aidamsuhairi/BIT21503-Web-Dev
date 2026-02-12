@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books JSON Display</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            /* Consistent Slate to Soft Grey gradient */
+            background: linear-gradient(135deg, #eceff1, #cfd8dc);
+            color: #263238;
+            padding: 40px;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+            /* Consistent Deep Teal */
+            color: #006064;
+            margin-bottom: 30px;
+        }
+
+        #booksContainer {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .book {
+            background: #ffffff;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 12px;
+            /* Matching teal shadow */
+            box-shadow: 0 4px 12px rgba(0, 96, 100, 0.15);
+            border-left: 6px solid #00838f; /* Teal accent bar */
+            transition: transform 0.2s;
+        }
+
+        .book:hover {
+            transform: translateY(-3px);
+        }
+
+        .book h2 {
+            margin: 0 0 10px;
+            color: #006064;
+            font-size: 1.4rem;
+        }
+
+        .book p {
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+
+        .book strong {
+            color: #102027;
+        }
+
+        .book ul {
+            margin: 8px 0 0;
+            padding-left: 20px;
+        }
+
+        .book li {
+            color: #007c91;
+            margin-bottom: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Book List</h1>
+    <div id="booksContainer">Loading books...</div>
+
+    <script>
+        fetch("./book.json")
+            .then(response => {
+                if (!response.ok) throw new Error("Failed to load JSON file");
+                return response.json();
+            })
+            .then(data => {
+                const books = data.book || [];
+                const container = document.getElementById("booksContainer");
+                container.innerHTML = ""; 
+
+                if (!Array.isArray(books) || books.length === 0) {
+                    container.textContent = "No books found in JSON.";
+                    return;
+                }
+
+                books.forEach((book, index) => {
+                    const bookDiv = document.createElement("div");
+                    bookDiv.className = "book";
+                    
+                    const title = book.title || "No title";
+                    const author = book.author || "Unknown author";
+                    const year = book.publicationYear || "Unknown year";
+                    const genres = Array.isArray(book.genres) ? book.genres : [];
+
+                    bookDiv.innerHTML = `
+                        <h2>${index + 1}. ${title}</h2>
+                        <p><strong>Author:</strong> ${author}</p>
+                        <p><strong>Publication Year:</strong> ${year}</p>
+                        <p><strong>Genres:</strong></p>
+                        <ul>
+                            ${genres.map(g => `<li>${g}</li>`).join("")}
+                        </ul>
+                    `;
+                    container.appendChild(bookDiv);
+                });
+            })
+            .catch(error => {
+                console.error("Error loading JSON:", error);
+                document.getElementById("booksContainer").innerHTML = 
+                    `<p style="color: #d32f2f; text-align: center;">Error loading books. Please ensure <b>book.json</b> exists in the same folder.</p>`;
+            });
+    </script>
+</body>
+</html>
