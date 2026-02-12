@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4A – JavaScript</title>
+</head>
+<body>
+
+    <script>
+        /* =========================================
+           PART 1: FUNCTION DEFINITIONS
+        =========================================
+        */
+
+        // Question 1: Iteration using a for loop
+        function printNumbers() {
+            console.log("Question 1: Printing numbers from 1 to 10");
+            for (let i = 1; i <= 10; i++) {
+                console.log(i);
+            }
+            console.log("Loop finished!");
+        }
+
+        // Question 2: Input validation and strict equality
+        function checkUTHM() {
+            console.log("Question 2: Checking UTHM input");
+            const userInput = prompt("Enter a value:");
+            
+            if (userInput === "UTHM") {
+                console.log("Welcome to UTHM!");
+            } else {
+                console.log("Invalid entry!");
+            }
+        }
+
+        // Question 3: Mathematical operations using Arrow Functions
+        const calculateSum = (num1, num2) => num1 + num2;
+
+        function getAndSumNumbers() {
+            console.log("Question 3: Calculating sum using arrow function");
+            const firstNumber = Number(prompt("Enter first number:"));
+            const secondNumber = Number(prompt("Enter second number:"));
+            
+            const result = calculateSum(firstNumber, secondNumber);
+            alert("The sum is: " + result);
+        }
+
+        // Question 4: Object-Oriented approach for Car data
+        const car = {
+            brand: "Toyota",
+            model: "Vios",
+            year: 2020,
+            carDetails() {
+                return `Car: ${this.brand} ${this.model}, Year: ${this.year}`;
+            }
+        };
+
+        // Question 5: Array manipulation techniques
+        function manipulateFruits() {
+            console.log("Question 5: Array Manipulation");
+            
+            let fruits = ["Apple", "Banana"];      // (a) Initialize
+            fruits.push("Mango");                  // (b) Add to end
+            fruits.unshift("Grapes");              // (c) Add to beginning
+            fruits.pop();                          // (d) Remove last
+            fruits.shift();                        // (e) Remove first
+            
+            console.log("Final fruits array:", fruits); // (f) Display result
+        }
+
+        /* =========================================
+           PART 2: EXECUTION CALLS
+        =========================================
+        */
+
+        printNumbers();
+        checkUTHM();
+        getAndSumNumbers();
+        
+        console.log("Question 4: Car Details");
+        console.log(car.carDetails());
+        
+        manipulateFruits();
+
+    </script>
+</body>
+</html>
